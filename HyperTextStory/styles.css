@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Tillana');
+@import url('https://fonts.googleapis.com/css?family=PT Serif');
+
 h1 {
-    font-family: 'Barrio';
+    font-family: 'Tillana';
 }
 
 body {
-    font-family: 'Andada Pro';
+    font-family: 'PT Serif';
     background-color: rgb(110, 177, 228);
     color: rgb(106, 67, 37);
 }
@@ -29,4 +32,14 @@ img {
 
 p {
     padding: 5px;
+}
+
+.sunset {
+    float: right;
+    width: 50%;
+}
+
+.home {
+    float: left;
+    width: 50%;
 }
