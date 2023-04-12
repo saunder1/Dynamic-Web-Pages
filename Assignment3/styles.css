@@ -1,0 +1,82 @@
+.canvas-border {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    border: 100px solid white;
+    z-index: 1000;
+}
+
+.canvas {
+    position: absolute;
+    margin: 0 auto;
+    background-color: #d0c7c0;
+    width: 500px;
+    height: 500px;
+    border: 100px solid white;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 700px;
+    height: 700px;
+}
+
+.nav {
+    position: fixed;
+}
+
+.red {
+    right: 0px;
+    position: absolute;
+    z-index: 1;
+
+    border-top: 300px solid transparent;
+    border-bottom: 300px solid transparent;
+    border-right: 300px solid #ae1b09;
+}
+
+.black {
+    bottom: 0px;
+    left: -75px;
+    position: absolute;
+
+    border-top: 275px solid transparent;
+    border-bottom: 275px solid transparent;
+    border-right: 275px solid #262020;
+}
+
+.yellow {
+    bottom: 0px;
+    position: absolute;
+
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-left: 100px solid #c9a342;
+}
+
+.gray-bottom {
+    bottom: 0px;
+    right: 100px;
+    position: absolute;
+
+    border-right: 200px solid transparent;
+    border-bottom: 200px solid #8b8d91;
+}
+
+.gray-top {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-top: 120px solid #6f6566;
+}
+
+.gray-left {
+    position: absolute;
+
+    border-bottom: 150px solid transparent;
+    border-left: 150px solid #8b8d91;
+}
