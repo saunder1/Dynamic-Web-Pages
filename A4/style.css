@@ -1,19 +1,36 @@
+#explosionButton {
+    display: block;
+    margin: 10px auto;
+    background-color: red;
+    z-index: 1;
+}
+
 body {
-    background-color: #F5F5F5;
+    background-color: #a58dc7;
     color: #3f2860;
     font-family: Arial;
 }
 
+main {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
 header {
+    background-image: url("images/lilyheader.jpeg");
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 150px;
     background-color: #9BC1C2;
-    text-align: center;
 }
 
 h1 {
-    line-height: 200%;
+    padding-top: 50px;
+    padding-left: 2em;
 }
 
 nav {
+    padding: 1em;
     font-weight: bold;
     text-align: center;
 }
@@ -23,6 +40,7 @@ nav a {
 }
 
 footer {
+    padding: 1em;
     background-color: #9BC1C2;
     font-size: .60em;
     font-style: italic;
@@ -34,9 +52,17 @@ footer {
 }
 
 #wrapper {
-    width: 80%;
+    min-width: 1000px;
+    max-width: 1280px;
     margin-right: auto;
     margin-left: auto;
+    background-color: #f5f5f5;
+}
+
+#hero {
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
 }
 
 .hidden {

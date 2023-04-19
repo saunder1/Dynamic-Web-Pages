@@ -1,5 +1,6 @@
 var backgroundMusicPlayed = false;
 var explosionButtonClicked = false;
+var elementsVisible = true;
 
 document.addEventListener("click", function(event) {
     if (!backgroundMusicPlayed && !explosionButtonClicked) {
@@ -16,6 +17,8 @@ document.getElementById("explosionButton").addEventListener("click", function() 
     var explosionSound = document.getElementById("explosionSound");
     var backgroundMusic = document.getElementById("backgroundMusic");
     var postExplosionMusic = document.getElementById("postExplosionMusic");
+
+    hideElements();
     
     explosion.classList.remove("hidden");
     explosionSound.currentTime = 0;
@@ -25,9 +28,24 @@ document.getElementById("explosionButton").addEventListener("click", function() 
     setTimeout(function() {
         explosion.classList.add("hidden");
         randomizePositions();
+        showElements();
         postExplosionMusic.play();
     }, 2000);
 });
+
+function hideElements() {
+    var elements = document.querySelectorAll("header, nav, main > *, footer");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add("hidden");
+    }
+}
+
+function showElements() {
+    var elements = document.querySelectorAll("header, nav, main > *, footer");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("hidden");
+    }
+}
 
 function randomizePositions() {
     var elements = document.querySelectorAll("header, nav, main > *, footer");
