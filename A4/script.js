@@ -33,6 +33,17 @@ document.getElementById("explosionButton").addEventListener("click", function() 
     }, 2000);
 });
 
+document.getElementById("muteButton").addEventListener("click", function() {
+    var audios = document.querySelectorAll("audio");
+    var isMuted = audios[0].muted;
+
+    for (var i = 0; i < audios.length; i++) {
+        audios[i].muted = !isMuted;
+    }
+
+    this.textContent = isMuted ? "Mute" : "Unmute";
+});
+
 function hideElements() {
     var elements = document.querySelectorAll("header, nav, main > *, footer");
     for (var i = 0; i < elements.length; i++) {
@@ -62,14 +73,3 @@ function randomizePositions() {
         elem.style.transform = "rotate(" + rotation + "deg)";
     }
 }
-
-document.getElementById("muteButton").addEventListener("click", function() {
-    var audios = document.querySelectorAll("audio");
-    var isMuted = audios[0].muted;
-
-    for (var i = 0; i < audios.length; i++) {
-        audios[i].muted = !isMuted;
-    }
-
-    this.textContent = isMuted ? "Mute" : "Unmute";
-});
