@@ -62,3 +62,14 @@ function randomizePositions() {
         elem.style.transform = "rotate(" + rotation + "deg)";
     }
 }
+
+document.getElementById("muteButton").addEventListener("click", function() {
+    var audios = document.querySelectorAll("audio");
+    var isMuted = audios[0].muted;
+
+    for (var i = 0; i < audios.length; i++) {
+        audios[i].muted = !isMuted;
+    }
+
+    this.textContent = isMuted ? "Mute" : "Unmute";
+});
