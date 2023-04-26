@@ -1,0 +1,30 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make the body element take the full width and height of the viewport */
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-image: url("images/space.jpeg");
+    background-size: 100%;
+}
+
+/* Style the earth-container */
+#earth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Style the earth-image */
+.earth-image {
+    width: 500px;
+    height: 500px;
+}
