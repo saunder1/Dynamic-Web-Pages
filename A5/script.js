@@ -31,9 +31,9 @@ const createAstronautElement = (name, craft) => {
     astronautInfo.style.padding = '5px';
     astronautInfo.style.border = '1px solid #000';
     astronautInfo.style.backgroundColor = '#FFF';
-    astronautInfo.style.display = 'none'; // Hide the info box by default
+    astronautInfo.style.display = 'none';
 
-    astronautOuterContainer.appendChild(astronaut); // Append the astronaut directly to the outer container
+    astronautOuterContainer.appendChild(astronaut);
     astronautOuterContainer.appendChild(astronautInfo);
     astronautOuterContainer.appendChild(astronautInnerContainer);
     return astronautOuterContainer;
@@ -70,28 +70,27 @@ const createNumberOfAstronautsElement = (numAstronauts) => {
     numberOfAstronauts.style.left = '50%';
     numberOfAstronauts.style.transform = 'translate(-50%, -50%)';
     numberOfAstronauts.style.fontFamily = '"Bruno Ace SC", Arial, sans-serif';
-    numberOfAstronauts.style.textAlign = 'center'; // Add text alignment
-    
+    numberOfAstronauts.style.textAlign = 'center';
+
     const count = document.createElement('div');
     count.textContent = numAstronauts;
     count.style.fontSize = '150px';
     count.style.fontWeight = 'bold';
     count.style.color = 'aqua';
     count.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.5)';
-    
+
     const label = document.createElement('div');
     label.textContent = 'people in space';
     label.style.fontSize = '40px';
     count.style.fontWeight = 'bold';
     label.style.color = 'aqua';
     label.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.5)';
-    
+
     numberOfAstronauts.appendChild(count);
     numberOfAstronauts.appendChild(label);
-    
+
     return numberOfAstronauts;
 };
-
 
 const displayAstronautName = (astronaut) => {
     astronaut.addEventListener('click', () => {
@@ -104,28 +103,46 @@ const displayAstronautName = (astronaut) => {
     });
 };
 
-fetch("http://api.open-notify.org/astros.json")
-    .then(response => response.json())
-    .then(data => {
-        const numAstronauts = data.number;
-        const astronauts = data.people;
-        const rotationAngle = 0;
-        const angleStep = 360 / numAstronauts;
+// this is the data from the people in space api as of 4/27/23
+const astrosJSON = `
+    {
+        "message": "success", 
+        "number": 10, 
+        "people": [
+            {"craft": "ISS", "name": "Sergey Prokopyev"}, 
+            {"craft": "ISS", "name": "Dmitry Petelin"}, 
+            {"craft": "ISS", "name": "Frank Rubio"}, 
+            {"craft": "Shenzhou 15", "name": "Fei Junlong"}, 
+            {"craft": "Shenzhou 15", "name": "Deng Qingming"}, 
+            {"craft": "Shenzhou 15", "name": "Zhang Lu"}, 
+            {"craft": "ISS", "name": "Stephen Bowen"}, 
+            {"craft": "ISS", "name": "Warren Hoburg"}, 
+            {"craft": "ISS", "name": "Sultan Alneyadi"}, 
+            {"craft": "ISS", "name": "Andrey Fedyaev"}
+        ]
+    }
+`;
 
-        const numberOfAstronautsElement = createNumberOfAstronautsElement(numAstronauts);
-        earthContainer.appendChild(numberOfAstronautsElement);
+const astrosData = JSON.parse(astrosJSON);
 
-        // Create and position astronaut elements around the Earth image
-        for (let i = 0; i < numAstronauts; i++) {
-            const astronautName = astronauts[i].name;
-            const astronautCraft = astronauts[i].craft;
-            const astronautOuterContainer = createAstronautElement(astronautName, astronautCraft);
-            earthContainer.appendChild(astronautOuterContainer);
-            const astronautElement = astronautOuterContainer.querySelector('.astronaut');
-            rotateAstronautAroundAxis(astronautElement);
-            displayAstronautName(astronautElement);
-        }
+const numAstronauts = astrosData.number;
+const astronauts = astrosData.people;
+const rotationAngle = 0;
+const angleStep = 360 / numAstronauts;
 
-        // Start rotating astronauts around the Earth image
-        rotateAstronauts(numAstronauts, rotationAngle, angleStep);
-    });
+const numberOfAstronautsElement = createNumberOfAstronautsElement(numAstronauts);
+earthContainer.appendChild(numberOfAstronautsElement);
+
+// Create and position astronaut elements around the Earth image
+for (let i = 0; i < numAstronauts; i++) {
+    const astronautName = astronauts[i].name;
+    const astronautCraft = astronauts[i].craft;
+    const astronautOuterContainer = createAstronautElement(astronautName, astronautCraft);
+    earthContainer.appendChild(astronautOuterContainer);
+    const astronautElement = astronautOuterContainer.querySelector('.astronaut');
+    rotateAstronautAroundAxis(astronautElement);
+    displayAstronautName(astronautElement);
+}
+
+// Start rotating astronauts around the Earth image
+rotateAstronauts(numAstronauts, rotationAngle, angleStep);
