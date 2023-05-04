@@ -17,25 +17,10 @@ input:focus {
     outline: none;
 }
 
-#chatLog {
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow-y: scroll;
+textarea {
     border: 3px solid darkolivegreen;
-}
-
-#textInput:focus {
-    outline: none;
-}
-
-#chatLog::-webkit-scrollbar {
-    width: 10px;
-}
-
-#chatLog::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-}
-
-#chatLog::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: "Cormorant";
+    color: white;
+    font-size: 15px;
 }
