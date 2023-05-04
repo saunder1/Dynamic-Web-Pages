@@ -1,1 +1,1 @@
-# saunder1.github.io
+# This repo contains all the projects for my CSCI 202 Dynamic Web Pages class I took at WWU in the Spring quarter of 2023.
