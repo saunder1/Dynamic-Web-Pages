@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant&display=swap');
+
+body {
+    background-image: url("gandalf.jpg");
+    background-size: cover;
+    font-family: "Cormorant";
+    color: white;
+}
+
+input {
+    border: 3px solid darkolivegreen;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+#chatLog {
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
+    border: 3px solid darkolivegreen;
+}
+
+#textInput:focus {
+    outline: none;
+}
+
+#chatLog::-webkit-scrollbar {
+    width: 10px;
+}
+
+#chatLog::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+
+#chatLog::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 5px;
+}
