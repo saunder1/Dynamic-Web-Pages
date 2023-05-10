@@ -12,6 +12,12 @@ const questions = [
         options: ["10", "13", "100"],
         feedbacks: ["Unlucky!", "Correct", "Hmm... You might want to count again."],
         correctOption: 1
+    },
+    {
+        question: "How many rings are in the structure?",
+        options: ["0", "infinite", "2"],
+        feedbacks: ["There's definitely more than 0 pal.", "Circles are ininite, so are there infinite rings?? No.", "Wow nice job, you can count!"],
+        correctOption: 2
     }
     // Add more question objects here...
 ];
@@ -47,6 +53,10 @@ function handleOptionClick(index) {
         hideQuestion();
         showFeedback(index);
 
+        if (currentQuestionIndex === 0) {
+            startTimer();
+        }
+
         if (index === questions[currentQuestionIndex].correctOption) {
             currentQuestionIndex++;
             if (currentQuestionIndex >= questions.length) {
@@ -80,7 +90,6 @@ function handleEndOfQuizClick(index) {
 function nextQuestion() {
     hideFeedback();
     displayQuestion();
-    startTimer();
 }
 
 function showFeedback(index) {
@@ -113,7 +122,6 @@ function hideQuestion() {
 }
 
 function resetQuiz() {
-    stopTimer();
     currentQuestionIndex = 0;
     timeRemaining = startTime;
     timerDisplay.innerText = `${timeRemaining}`;
@@ -139,7 +147,7 @@ function updateCountdown() {
         hideQuestion();
         feedback.innerText = 'Sorry, you ran out of time!';
         feedback.hidden = false;
-        setTimeout(resetQuiz, bufferTime);
+        setTimeout(endQuiz, bufferTime);
     }
 }
 

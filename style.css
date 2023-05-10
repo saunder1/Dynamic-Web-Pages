@@ -85,6 +85,10 @@ body {
     background-position: 0% -100%;
 }
 
+#menu[data-active-index="6"] > #menu-background-pattern {
+    background-position: 0% -113%;
+}
+
 #menu-background-image {
     height: 100%;
     width: 100%;
@@ -132,4 +136,8 @@ body {
 
 #menu[data-active-index="5"] > #menu-background-image {
     background-position: center 70%;
+}
+
+#menu[data-active-index="6"] > #menu-background-image {
+    background-position: center 75%;
 }
