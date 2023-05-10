@@ -1,6 +1,6 @@
 const questions = [
     {
-        question: "Are you at the circular brick window ring at WWU now?",
+        question: "Are you at the stone ring structure of WWU now?",
         options: ["Yes", "No", "I don't know"],
         feedbacks: ["Good. You will need to be if you want to win this quiz.", 
                     "This quiz will be very difficult if you are not there.", 
@@ -8,9 +8,9 @@ const questions = [
         correctOption: 0
     },
     {
-        question: "How many windows are there in the structure?",
-        options: ["10", "13", "100"],
-        feedbacks: ["Unlucky!", "Correct", "Hmm... You might want to count again."],
+        question: "How many windows are in the structure?",
+        options: ["14", "12", "100"],
+        feedbacks: ["Unlucky, you'll get it next time!", "12 you say... you're right!", "Hmm... Not really close at all. Sorry."],
         correctOption: 1
     },
     {
@@ -18,6 +18,24 @@ const questions = [
         options: ["0", "infinite", "2"],
         feedbacks: ["There's definitely more than 0 pal.", "Circles are ininite, so are there infinite rings?? No.", "Wow nice job, you can count!"],
         correctOption: 2
+    },
+    {
+        question: "How many doorways are in the structure?",
+        options: ["4", "2", "300"],
+        feedbacks: ["Great job person!", "Try again, I know you can do it!", "huh? you're silly"],
+        correctOption: 0
+    },
+    {
+        question: "Standing in the very middle, how many lamp poles with the round lights can you see out the windows?",
+        options: ["3", "4", "2"],
+        feedbacks: ["Stand directly in the middle. DIRECTLY.", "You're not in the middle.", "Yippee you're on a roll!"],
+        correctOption: 2
+    },
+    {
+        question: "Who created the stone ring structure?",
+        options: ["Nancy Kerrigan", "Nancy Holt", "Nancy Drew"],
+        feedbacks: ["No but she was a great figure ice skater.", "Correct. You win!", "Wrong Nancy!"],
+        correctOption: 1
     }
     // Add more question objects here...
 ];
@@ -43,6 +61,21 @@ options.forEach((option, index) => {
     option.addEventListener('click', handleOptionClick(index));
 });
 
+let nextQuestionTimeoutId;
+let endQuizTimeoutId;
+let allowSkip = false;
+
+document.addEventListener('click', function(event) {
+    if (!feedback.hidden && allowSkip && !event.target.classList.contains('option')) {
+        if (currentQuestionIndex < questions.length) {
+            clearTimeout(nextQuestionTimeoutId); // Clear existing timeout
+            nextQuestion();
+        } else {
+            clearTimeout(endQuizTimeoutId); // Clear existing timeout
+            endQuiz();
+        }
+    }
+});
 function handleOptionClick(index) {
     return function() {
         if (question.innerText === 'Would you like to play again?') {
@@ -58,12 +91,13 @@ function handleOptionClick(index) {
         }
 
         if (index === questions[currentQuestionIndex].correctOption) {
+            allowSkip = true;
             currentQuestionIndex++;
             if (currentQuestionIndex >= questions.length) {
                 stopTimer();
-                setTimeout(endQuiz, bufferTime);
+                endQuizTimeoutId = setTimeout(endQuiz, bufferTime);
             } else {
-                setTimeout(nextQuestion, bufferTime);
+                nextQuestionTimeoutId = setTimeout(nextQuestion, bufferTime);
             }
         } else {
             stopTimer();
@@ -88,6 +122,7 @@ function handleEndOfQuizClick(index) {
 }
 
 function nextQuestion() {
+    allowSkip = false;
     hideFeedback();
     displayQuestion();
 }
@@ -127,6 +162,7 @@ function resetQuiz() {
     timerDisplay.innerText = `${timeRemaining}`;
     hideFeedback();
     displayQuestion();
+    allowSkip = false;
 }
 
 function startTimer() {
