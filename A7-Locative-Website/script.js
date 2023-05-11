@@ -16,19 +16,19 @@ const questions = [
     {
         question: "How many rings are in the structure?",
         options: ["0", "infinite", "2"],
-        feedbacks: ["There's definitely more than 0 pal.", "Circles are ininite, so are there infinite rings?? No.", "Wow nice job, you can count!"],
+        feedbacks: ["There's definitely more than 0, pal.", "Circles are ininite... so are there infinite rings?? No.", "Wow nice job, you can count!"],
         correctOption: 2
     },
     {
         question: "How many doorways are in the structure?",
         options: ["4", "2", "300"],
-        feedbacks: ["Great job person!", "Try again, I know you can do it!", "huh? you're silly"],
+        feedbacks: ["Great job, person!", "Try again, I know you can do it!", "Huh? Something went wrong."],
         correctOption: 0
     },
     {
         question: "Standing in the very middle, how many lamp poles with the round lights can you see out the windows?",
         options: ["3", "4", "2"],
-        feedbacks: ["Stand directly in the middle. DIRECTLY.", "You're not in the middle.", "Yippee you're on a roll!"],
+        feedbacks: ["Stand directly in the middle. DIRECTLY.", "I bet you're not quite in the middle.", "Yippee you're on a roll!"],
         correctOption: 2
     },
     {
@@ -115,7 +115,7 @@ function handleEndOfQuizClick(index) {
             showMessage('Thanks for playing!');
             break;
         case 2:
-            startTime = 10;
+            startTime = Math.floor(startTime / 2);
             resetQuiz();
             break;
     }
